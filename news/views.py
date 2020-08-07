@@ -4,7 +4,9 @@ from django.http import HttpResponse, Http404
 
 
 def welcome(request):
-    return render(request, 'news/welcome.html')
+    return render(request, 'news/welcome.html', {
+        'date': datetime.datetime.now()
+    })
 
 
 def past_days_news(request, past_date):
