@@ -4,10 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      {% block title %} {% endblock title %}
+      {% if title %}
+        Moringa Tribune - {{ title }}
+      {% else %}
+        Moringa Tribune
+      {% endif %}
     </title>
   </head>
   <body>
-    {% block body %} {% endblock body %}
+    {% block body %} <h1>News for {{ date|date:"l d-F Y" }} </h1> {% endblock body %}
   </body>
 </html>

@@ -4,7 +4,7 @@ from django.http import HttpResponse, Http404
 
 
 def welcome(request):
-    return HttpResponse('Welcome to the Moringa Tribune.')
+    return render(request, 'news/welcome.html')
 
 
 def convert_dates(dates):
