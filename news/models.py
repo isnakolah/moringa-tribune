@@ -15,7 +15,7 @@ class Editor(models.Model):
         ordering = ['-first_name']
 
 
-class Tags(models.Model):
+class tags(models.Model):
     name = models.CharField(max_length=30)
 
     def __str__(self):
@@ -29,5 +29,8 @@ class Article(models.Model):
     title = models.CharField(max_length=60)
     post = models.TextField()
     editor = models.ForeignKey(Editor, on_delete=models.CASCADE)
-    tags = models.ManyToManyField(Tags)
+    tags = models.ManyToManyField(tags)
     pub_date = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
