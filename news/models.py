@@ -1,3 +1,4 @@
+import datetime
 from django.db import models
 
 
@@ -34,3 +35,9 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+
+    @classmethod
+    def todays_news(cls):
+        today = datetime.date.today()
+        news = cls.objects.filter(pub_date=today)
+        return news
