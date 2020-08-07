@@ -3,9 +3,11 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
 
 
-def welcome(request):
-    return render(request, 'news/welcome.html', {
-        'date': datetime.datetime.now()
+def news_of_the_day(request):
+    date = datetime.date.today()
+
+    return render(request, 'news/index.html', {
+        'date': date,
     })
 
 
@@ -23,13 +25,5 @@ def past_days_news(request, past_date):
         return redirect(news_of_the_day)
 
     return render(request, 'news/past-news.html', {
-        'date': date,
-    })
-
-
-def news_of_the_day(request):
-    date = datetime.date.today()
-
-    return render(request, 'news/today', {
         'date': date,
     })
