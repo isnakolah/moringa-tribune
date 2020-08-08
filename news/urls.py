@@ -10,6 +10,7 @@ urlpatterns = [
             views.past_days_news, name='past_news'),
     path('search/', views.search_results, name='search_results'),
     path('all-news/', views.all_news, name='all_news'),
+    path('article/<int:article_id>', views.article, name='article')
 ]
 
 if settings.DEBUG:

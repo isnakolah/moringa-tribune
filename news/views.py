@@ -1,7 +1,7 @@
 import datetime
-from django.shortcuts import render, redirect
-from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.db.models import Q
+from django.http import HttpResponse, Http404, HttpResponseRedirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Article
 
 
@@ -15,11 +15,6 @@ def news_today(request):
 
 
 def all_news(request):
-    # news = Article.objects.all()
-    # return render(request, 'news/index.html'), {
-    #     'date': datetime.date.today(),
-    #     'news': news
-    # }
     return render(request, 'news/index.html', {
         'news': Article.objects.all(),
     })
@@ -55,3 +50,11 @@ def search_results(request):
             'message': message,
             'articles': searched_articles
         })
+
+
+def article(request, article_id):
+    article = get_object_or_404(Article, pk=article_id)
+
+    return render(request, 'news/article.html', {
+        'article': article
+    })

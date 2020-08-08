@@ -11,13 +11,15 @@
         <ul>
           {% for article in articles %}
           <div class="card">
-            <li><h1 class="card-title p-2 px-3 my-2">{{ article.title }}</h1></li>
+            <a href="{% url 'news:article' article.id %}">
+              <li><h1 class="card-title p-2 px-3 my-2">{{ article.title }}</h1></li>
+            </a>
           </div>
         {% endfor %}
       {% else %}
-        <h1>Nothing was returned</h1>
+        <h1>I am sorry, nothing came back from your search.</h1>
         </ul>
       {% endif %}
     </div>
   </div>
-{% endblock content %}d
+{% endblock content %}
