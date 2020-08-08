@@ -4,16 +4,50 @@
     {{ block.super }}
     <!-- Looping through news -->
     {% for news_item in news %}
-      <div class="row">
 
-        <!-- Displaying news articles -->
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-          <h2 class="text-left">{{ news_item.title }}</h2>
+      <!-- Another trial -->
+      <div class="card text-center">
+        <div class="card-header">
+          {{ news_item.tags.all }}
         </div>
+        <div class="card-body">
+          <div class="row">
+            
+            <!-- The first part -->
+            <div class="col-md-6 text-left">
+              <h5 class="card-title">{{ news_item.title }}</h5>
+              <!-- <div class="float-right col-md-6" style="width: 18rem; height: auto">
+                <img class="card-img-right float-right" src="{{ news_item.image.url }}" alt="Card image cap">
+              </div> -->
+              <!-- The summary -->
+              <div class="text-left">
+                {% if news_item.summary %}
+                  <p class="card-text">{{ article.summary }}</p>
+                {% else %}
+                  <p class="card-text">This
+                    <a href="{% url 'news:article' news_item.id %}" >
+                    <strong>'{{ news_item.title }}'</strong>
+                    </a>  is a good read. </p>
+                {% endif %}
+                <a href="{% url 'news:article' news_item.id %}" class="btn btn-primary">Read</a>
+              </div>
+            </div>
 
-        <!-- Display article images -->
-        <div class="col-md-6">
-          <img src="{{ news_item.image.url }}" class="img-responsive" alt="Image">
+            <!-- The image -->
+            <div class="col-md-6">
+              <div class="float-right">
+                <img 
+                  class="card-img-right float-right" 
+                  src="{{ news_item.image.url }}" 
+                  alt="Card image cap" 
+                  style="width: 400px; height:auto;"
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer text-muted">
+          Posted {{ news_item.pub_date|timesince }} by {{ news_item.editor.first_name }}
         </div>
       </div>
 
