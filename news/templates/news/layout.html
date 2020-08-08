@@ -23,7 +23,11 @@
 
     <div class="container">
       <!-- The body block -->
-      {% block content %} <h1 class="text-center">News for {{ date|date:"l d-F Y" }} </h1> {% endblock content %}
+      {% block content %} 
+        {% if date %}
+          <h1 class="text-center">News for {{ date|date:"l d-F Y" }} </h1>
+        {% endif %}
+      {% endblock content %}
     </div>
 
     <!-- Scripts -->

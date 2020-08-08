@@ -8,14 +8,16 @@
     </div>
     <div class="row">
       {% if articles %}
-        {% for article in articles %}
-          <div class="col-sm-6 col-md-3">
-            <h1>{{ article.title }}</h1>
+        <ul>
+          {% for article in articles %}
+          <div class="card">
+            <li><h1 class="card-title p-2 px-3 my-2">{{ article.title }}</h1></li>
           </div>
         {% endfor %}
-        {% else %}
+      {% else %}
         <h1>Nothing was returned</h1>
+        </ul>
       {% endif %}
     </div>
   </div>
-{% endblock content %}
+{% endblock content %}d

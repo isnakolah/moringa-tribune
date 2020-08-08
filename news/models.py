@@ -23,7 +23,7 @@ class tags(models.Model):
         return self.name
 
     class Meta:
-        verbose_name_plural = 'Tags'
+        verbose_name_plural = 'tags'
 
 
 class Article(models.Model):
@@ -44,4 +44,5 @@ class Article(models.Model):
 
     @classmethod
     def search_by_title(cls, search_term):
-        news = cls.objects.filter(title__icontains=search_term)
+        search_result = cls.objects.filter(title__icontains=search_term)
+        return search_result

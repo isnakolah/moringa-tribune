@@ -6,7 +6,7 @@
 
     <!-- Adding a search form -->
     <div class="col-sm-4 col-md-4 navbar-right">
-      <form role="search" action="{% url 'news:search_results' %}" class="navbar-form">
+      <form role="search" action="{% url 'news:search_results' %}" class="navbar-form" method="GET" name="q">
         <div class="input-group">
           <input type="text" name="article" placeholder="Search Article" class="form-control">
           <div class="input-group-button">
