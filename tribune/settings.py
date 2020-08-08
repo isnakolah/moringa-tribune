@@ -1,9 +1,10 @@
 # import json
 import os
-import django_heroku
-import dj_database_url
-from decouple import config, Csv
 from pathlib import Path
+
+import dj_database_url
+import django_heroku
+from decouple import Csv, config
 from django.core.exceptions import ImproperlyConfigured
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
