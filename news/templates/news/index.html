@@ -59,13 +59,11 @@
     {% endfor %}
 
     <!-- Looping trough news end -->
-    <div class="container-fluid">
-      <form action="{% url 'news:news_today' %}" method="post">
+    <div class="container-fluid row">
+      <form action="{% url 'news:news_today' %}" method="post" class="form col-md-6">
         {% csrf_token %}
-        {% for field in form %}
-          {% bootstrap_field field %}
-        {% endfor %}
-        <input type="submit" value="Subscribe">
+        {% bootstrap_form letter_form layout='inline' class='rounded-0' %}
+        <input type="submit" value="Subscribe" class="btn btn-outline-dark rounded-0">
       </form>
     </div>
   </div>
