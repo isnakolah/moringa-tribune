@@ -3,15 +3,27 @@ from django.db.models import Q
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Article
+from .forms import NewsLetterForm
 
 
 def news_today(request):
     date = datetime.date.today()
     news = Article.todays_news()
-    return render(request, 'news/index.html', {
+
+    if request.method == 'POST':
+        form = NewsLetterForm(request.POST)
+        if form.is_valid():
+            print('valid')
+        else:
+            form = NewsLetterForm()
+
+    context = {
         'date': date,
-        'news': news
-    })
+        'news': news,
+        'letter_form': form,
+    }
+
+    return render(request, 'news/index.html', context)
 
 
 def all_news(request):

@@ -11,7 +11,9 @@
       <p>{{ article.post }}</p>
     </div>
     <div class="row">
-      <p>Posted <em>{{ article.pub_date|timesince }}</em> by <strong>{{ article.editor.first_name }}</strong></p>
+      <em>
+        <p>~ Posted {{ article.pub_date|timesince }} by <strong>{{ article.editor.first_name }}</strong></p>
+      </em>
     </div>
   </div>
 {% endblock content %}
